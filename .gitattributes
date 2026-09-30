@@ -1,0 +1,19 @@
+* text=auto
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.txt text eol=lf
+
+# Serve real media files from Pages; do not replace them with Git LFS pointers.
+*.mp4 binary -filter
+*.webm binary -filter
+*.mov binary -filter
+*.jpg binary -filter
+*.jpeg binary -filter
+*.png binary -filter
+*.gif binary -filter
+*.webp binary -filter
+*.pdf binary -filter

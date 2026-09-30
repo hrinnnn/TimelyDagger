@@ -1,0 +1,14 @@
+.DS_Store
+.codex/
+.openai/
+.env
+.env.*
+node_modules/
+__pycache__/
+*.pyc
+*.log
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.safetensors

@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:00.280 --> 00:00:03.484
+DAgger collects expert supervision on states visited by the
+
+00:00:03.494 --> 00:00:04.138
+robot.
+
+00:00:04.411 --> 00:00:07.031
+These new examples join the existing dataset.
+
+00:00:07.304 --> 00:00:09.841
+The combined data updates the policy for the next
+
+00:00:09.851 --> 00:00:11.567
+round of robot execution.
+
+00:00:12.447 --> 00:00:13.471
+But when should help begin?
+
+00:00:13.780 --> 00:00:16.055
+Here, pickup and handover are familiar.
+
+00:00:16.328 --> 00:00:19.568
+The remaining difficulty is precise insertion at a shifted
+
+00:00:19.578 --> 00:00:20.126
+target.
+
+00:00:20.988 --> 00:00:24.346
+Early takeover can repeat behavior the robot already knows.
+
+00:00:24.631 --> 00:00:27.954
+With limited expert data, a smaller share of supervision
+
+00:00:28.036 --> 00:00:30.013
+may address the difficult stage.
+
+00:00:30.988 --> 00:00:35.013
+With late takeover, the expert demonstration begins after execution
+
+00:00:35.095 --> 00:00:37.656
+has deviated from the intended task trajectory.
+
+00:00:37.929 --> 00:00:39.931
+It may miss part of the behavior the policy
+
+00:00:39.941 --> 00:00:40.715
+needs to learn.
+
+00:00:42.988 --> 00:00:46.276
+Timely takeover aims to capture the remaining difficulty from
+
+00:00:46.286 --> 00:00:50.145
+a suitable state, concentrating more expert supervision on what
+
+00:00:50.155 --> 00:00:51.918
+the policy still needs to learn.
+
+00:00:52.780 --> 00:00:55.102
+Both early and late interventions can succeed.
+
+00:00:55.387 --> 00:00:58.139
+But under the same expert-action budget, they can provide
+
+00:00:58.149 --> 00:00:59.543
+very different training data.
+
+00:00:59.840 --> 00:01:01.519
+Who should decide when help begins?
+
+00:01:02.363 --> 00:01:05.638
+In human-gated DAgger, a person decides when to intervene.
+
+00:01:05.911 --> 00:01:09.114
+In robot-gated DAgger, the robot triggers the request.
+
+00:01:09.387 --> 00:01:12.733
+In both cases, the expert still provides the demonstration.
+
+00:01:13.613 --> 00:01:15.996
+Can signals inside the policy help choose a useful
+
+00:01:16.006 --> 00:01:16.412
+time?
+
+00:01:16.685 --> 00:01:20.449
+TimelyDAgger combines internal feature monitoring with feedback from
+
+00:01:20.459 --> 00:01:24.174
+completed expert interventions to improve future takeover timing.

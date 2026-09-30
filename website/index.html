@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TimelyDAgger improves VLA policies by choosing when to request expert help, combining Bridge-PCA monitoring with feedback-guided threshold adaptation.">
+  <meta name="citation_title" content="TimelyDAgger: Timing-Aware Expert Querying for VLA Policy Improvement">
+  <meta name="citation_arxiv_id" content="2609.33157">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2609.33157">
+  <title>TimelyDAgger | SEEN·E Research</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='5' fill='%23111'/%3E%3Ccircle cx='20' cy='20' r='12' stroke='white' stroke-width='2.5' fill='none'/%3E%3Cpath d='M20 11v10l7 4' stroke='%23af2c29' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body class="visual-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header><div class="header-inner">
+  <a class="brand-lockup" href="#" aria-label="SEEN·E Research — TimelyDAgger"><img class="brand-logo" src="assets/seene-logo.png" alt="SEEN·E"><span class="project-mark"><small>RESEARCH</small><strong>TimelyDAgger</strong></span></a>
+  <nav aria-label="Page sections"><a href="#motivation-film">Film</a><a href="#motivation">Motivation</a><a href="#method">Method</a><a href="#results">Evidence</a><a href="#videos">Robot demos</a></nav>
+  <a class="header-paper" href="https://arxiv.org/abs/2609.33157" target="_blank" rel="noopener">Paper on arXiv</a>
+</div></header>
+<main id="main">
+<section class="hero wrap">
+  <div class="eyebrow">ROBOT LEARNING <span>·</span> arXiv:2609.33157</div>
+  <h1>TimelyDAgger</h1>
+  <p class="paper-title">Timing-Aware Expert Querying<br class="desktop-break"> for VLA Policy Improvement</p>
+  <p class="authors">Zhixuan Zhao<sup>1,6,†</sup>, Peiyan Li<sup>1,6,†</sup>, Enhao Zhang<sup>2,6</sup>, Yueran Tao<sup>1,6</sup>,<br class="desktop-break"> Hao Wang<sup>3,6</sup>, Chenghao Yue<sup>1,6</sup>, Lei Lv<sup>4,6</sup>, Wentao Zhao<sup>1,6</sup>, Jiahao Chen<sup>5,6</sup>,<br class="desktop-break"> Xin Liu<sup>1,6</sup>, Kangyao Huang<sup>1,6</sup>, Yu Luo<sup>1,6,*</sup>, Huaping Liu<sup>1,6,*</sup></p>
+  <p class="affiliations"><span><sup>1</sup>Tsinghua University</span><span><sup>2</sup>Imperial College London</span><span><sup>3</sup>Dalian University of Technology</span><span><sup>4</sup>Tongji University</span><span><sup>5</sup>Peking University</span><span><sup>6</sup>SEEN·E Robotics</span></p>
+  <p class="author-notes">† Equal contribution &nbsp;&nbsp; * Corresponding authors</p>
+  <div class="actions"><a class="button" href="https://arxiv.org/abs/2609.33157" target="_blank" rel="noopener">Read the paper</a><a class="button secondary" href="#motivation-film">Watch motivation · 85 sec</a><a class="button secondary" href="#overview">Full overview · 3 min</a><span class="button secondary code-placeholder" aria-disabled="true">Code <span>Coming soon</span></span><a class="button secondary" href="#citation">Cite this work</a></div>
+  <p class="lede"><strong>Better takeover timing. More useful supervision.</strong></p>
+</section>
+
+<section id="motivation-film" class="overview wrap" aria-labelledby="motivation-film-title">
+  <div class="section-top"><div><div class="eyebrow">START WITH THE FILM</div><h2 id="motivation-film-title">When should a robot ask for help?</h2></div><p>85 sec · English narration · CC</p></div>
+  <div class="film-layout"><video id="motivation-video" controls playsinline preload="metadata" src="assets/videos/motivation.mp4?v=5" poster="assets/posters/motivation.jpg?v=5" aria-label="Narrated motivation: DAgger, takeover timing, robot gating, and TimelyDAgger"><track kind="captions" src="assets/motivation-en.vtt?v=5" srclang="en" label="English"></video>
+  <aside class="film-sidebar"><div class="eyebrow">THE STORY</div><div class="motivation-chapters" role="group" aria-label="Motivation video chapters"><button type="button" data-motivation-time="0"><span>00:00</span>Learn with DAgger</button><button type="button" data-motivation-time="12.166667"><span>00:12</span>Timing changes the data</button><button type="button" data-motivation-time="62.083333"><span>01:02</span>Who decides?</button><button type="button" data-motivation-time="73.333333"><span>01:13</span>TimelyDAgger</button></div></aside></div>
+</section>
+<section id="motivation" class="section pale"><div class="wrap">
+  <div class="eyebrow">01 / THE PROBLEM</div><h2 class="section-title">Same expert budget. Different demonstrations.</h2>
+  <p class="section-lede">The takeover time changes which behavior the policy learns from.</p>
+  <div class="timing-cards"><article class="timing-card early"><video controls muted loop playsinline preload="none" src="assets/videos/timing-early.mp4" poster="assets/posters/timing-early.jpg" aria-label="Too early takeover example"></video><div class="timing-card-label"><h3>Too early</h3><p>Repeat familiar behavior.</p></div></article><article class="timing-card late"><video controls muted loop playsinline preload="none" src="assets/videos/timing-late.mp4" poster="assets/posters/timing-late.jpg" aria-label="Too late takeover example"></video><div class="timing-card-label"><h3>Too late</h3><p>Miss part of the target behavior.</p></div></article><article class="timing-card timely"><video controls muted loop playsinline preload="none" src="assets/videos/timing-timely.mp4" poster="assets/posters/timing-timely.jpg" aria-label="Timely takeover example"></video><div class="timing-card-label"><h3>Timely</h3><p>Focus on the behavior still to learn.</p></div></article></div>
+  <details class="quiet-detail"><summary>Figure 1 and the DAgger learning loop</summary><figure class="paper-figure "><a class="figure-zoom" href="assets/teaser.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/teaser.jpg" loading="lazy" alt="Figure 1: expert-querying loop and early, timely, and late takeover"></a></figure><p id="learning-loop">Robot execution → expert supervision → aggregate demonstrations → update the policy.</p><p id="gating">Human-gated DAgger: a person chooses when to intervene. Robot-gated DAgger: the robot requests help. Both learn from expert demonstrations.</p><p>Video excerpts retain the source playback speeds. Equal-budget composition in the motivation film is schematic.</p></details>
+</div></section>
+<section id="method" class="section wrap" aria-labelledby="method-title">
+  <div class="eyebrow">02 / THE METHOD</div><h2 id="method-title" class="section-title">Monitor the policy. Learn when to ask.</h2>
+  <p class="section-lede">Internal features trigger assistance; expert feedback adjusts future takeover timing.</p>
+  <div class="method-panels"><div class="display-tabs" role="group" aria-label="Method views"><button type="button" data-method-view="framework" aria-pressed="true" aria-controls="method-framework">The full loop</button><button type="button" data-method-view="bridge" aria-pressed="false" aria-controls="method-bridge">Bridge-PCA</button><button type="button" data-method-view="feedback" aria-pressed="false" aria-controls="method-feedback">Expert feedback</button></div>
+  <div id="method-framework" class="visual-panel"><figure class="paper-figure "><a class="figure-zoom" href="assets/method_overview.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/method_overview.jpg" loading="lazy" alt="TimelyDAgger framework: build a gate, collect expert data with feedback, update the policy"></a></figure><p class="panel-caption">Build the gate → collect demonstrations → update the policy.</p></div>
+  <div id="method-bridge" class="visual-panel" hidden><figure class="paper-figure "><a class="figure-zoom" href="assets/whybridge_window_compact.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/whybridge_window_compact.jpg" loading="lazy" alt="Input, bridge, and action alarm locations relative to a preferred takeover window"></a></figure><p class="panel-caption">Bridge features provide a task-conditioned signal between perception and action.</p></div>
+  <div id="method-feedback" class="visual-panel" hidden><figure class="paper-figure "><a class="figure-zoom" href="assets/real_world_qualitative.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/real_world_qualitative.jpg" loading="lazy" alt="Cable task stages and a corrective intervention that advances takeover in the next rollout"></a></figure><p class="panel-caption">The expert’s initial correction informs the next episode’s threshold.</p></div></div>
+  <details class="quiet-detail"><summary>Technical details</summary><p>Bridge-PCA measures departure from a PCA reference fitted to in-distribution policy features. A residual above the calibrated threshold requests expert assistance.</p><div class="equation"><p>s(oₜ) = ‖(I − VVᵀ)(zₜ − μ)‖₂</p><p>γᵢ₊₁ = γᵢ exp(−βyᵢ)</p></div><p>After a completed intervention, FTA lowers the threshold for a corrective reversal, raises it when expert and policy agree without substantial correction, and otherwise keeps it. Updates apply to subsequent episodes.</p><p>The policy is fine-tuned on retained successful expert suffixes mixed with the original demonstrations, then evaluated without assistance.</p></details>
+</section>
+<section id="experiments" class="section pale"><div class="wrap">
+  <div class="eyebrow">03 / THE TEST</div><h2 class="section-title">Shift the task. Keep the expert budget fixed.</h2>
+  <div class="study-layout"><figure class="paper-figure "><a class="figure-zoom" href="assets/task_demonstrations.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/task_demonstrations.jpg" loading="lazy" alt="ID and OOD task configurations: changes to position, pose, or object identity"></a></figure><aside class="study-meta"><div class="study-stat"><strong>11</strong><span>task variants</span></div><div class="study-stat"><strong>3</strong><span>VLA backbones</span></div><div class="study-stat"><strong>15</strong><span>task–backbone settings</span></div><p>Collect → update → test</p></aside></div>
+  <details class="quiet-detail"><summary>Evaluation protocol and metrics</summary><p>Within each task and backbone, methods share the starting checkpoint, retained expert-action budget, original-data mixing ratio, and policy-training settings. Updated policies run without assistance.</p><p><b>AUPRC:</b> failure detection on shared autonomous rollouts. <b>TASR:</b> the fraction of retained expert actions aligned with the shifted operation. <b>OOD success:</b> post-training task success.</p><p>TASR uses successful OOD references, manually annotated target intervals, sequence alignment, and a calibrated state tolerance. Simulation expert actions come from a task oracle; the Human-Gated baseline uses a predefined failure-triggered takeover rule.</p></details>
+</div></section>
+<section id="results" class="section wrap">
+  <div class="eyebrow">04 / THE EVIDENCE</div><h2 class="section-title">Better supervision. Stronger policies.</h2>
+  <div class="display-tabs evidence-tabs" role="group" aria-label="Simulation result views"><button type="button" data-result-view="success" aria-pressed="true" aria-controls="result-success">Policy improvement</button><button type="button" data-result-view="timing" aria-pressed="false" aria-controls="result-timing">Timing &amp; feedback</button><button type="button" data-result-view="quality" aria-pressed="false" aria-controls="result-quality">Supervision quality</button></div>
+  <div id="result-success" class="visual-panel result-stage"><figure class="paper-figure "><a class="figure-zoom" href="assets/simulation-success.svg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/simulation-success.svg" loading="lazy" alt="Post-training success for four acquisition methods in all 15 evaluated settings"></a></figure><p class="panel-caption">Matched retained expert-action budgets · Table I.</p></div>
+  <div id="result-timing" class="visual-panel result-stage" hidden><figure class="paper-figure "><a class="figure-zoom" href="assets/timing_fta_shaded_corrected_compact.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/timing_fta_shaded_corrected_compact.jpg" loading="lazy" alt="Fixed takeover timing study and feedback-guided threshold adaptation ablation"></a></figure><p class="panel-caption">OpenDrawer Grasp-OOD: 42% → 78% success by changing takeover timing under the same budget.</p></div>
+  <div id="result-quality" class="visual-panel result-stage" hidden><figure class="paper-figure "><a class="figure-zoom" href="assets/tasr-success.svg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/tasr-success.svg" loading="lazy" alt="Separate TASR versus success panels for 15 task and backbone settings"></a></figure><p class="panel-caption">Mean within-setting Spearman ρ = 0.72 · positive in 14/15 settings.</p></div>
+  <details class="quiet-detail"><summary>Exact results and analysis</summary><div class="table-scroll"><table class="result-table"><caption>Matched retained expert-action budgets and training settings within each task and backbone. Bold numbers mark the highest reported success in each row.</caption><thead><tr><th scope="col">Backbone</th><th scope="col">Task</th><th scope="col">Offline BC</th><th scope="col">HG-DAgger</th><th scope="col">Diff-DAgger</th><th scope="col">TimelyDAgger</th></tr></thead><tbody><tr><td>π₀.₅</td><td>StackCube–Green</td><td>49</td><td>29</td><td>34</td><td><strong>81</strong></td></tr>
+<tr><td>π₀.₅</td><td>StackCube–Red</td><td>48</td><td>39</td><td>55</td><td><strong>76</strong></td></tr>
+<tr><td>π₀.₅</td><td>OpenDrawer–Handle</td><td>46</td><td>41</td><td>55</td><td><strong>68</strong></td></tr>
+<tr><td>π₀.₅</td><td>OpenDrawer–Place</td><td>43</td><td>37</td><td>52</td><td><strong>64</strong></td></tr>
+<tr><td>π₀.₅</td><td>StackPyramid–Green</td><td>50</td><td>47</td><td>46</td><td><strong>53</strong></td></tr>
+<tr><td>π₀.₅</td><td>StackPyramid–Red</td><td>60</td><td>57</td><td>45</td><td><strong>79</strong></td></tr>
+<tr><td>π₀.₅</td><td>StackPyramid–Blue</td><td>75</td><td>67</td><td>54</td><td><strong>80</strong></td></tr>
+<tr><td>π₀.₅</td><td>PickPlane</td><td>0</td><td>63</td><td><strong>84</strong></td><td>81</td></tr>
+<tr><td>π₀.₅</td><td>OpenDrawer–Pose</td><td>42</td><td>35</td><td>51</td><td><strong>66</strong></td></tr>
+<tr><td>π₀.₅</td><td>YCB–Object</td><td>48</td><td>49</td><td>42</td><td><strong>52</strong></td></tr>
+<tr><td>π₀.₅</td><td>Eggplant</td><td>47</td><td>40</td><td>55</td><td><strong>69</strong></td></tr>
+<tr><td>OpenVLA</td><td>PickPlane</td><td>30</td><td>26</td><td>14</td><td><strong>50</strong></td></tr>
+<tr><td>OpenVLA</td><td>StackCube–Green</td><td>71</td><td>63</td><td>64</td><td><strong>82</strong></td></tr>
+<tr><td>X-VLA</td><td>PickPlane</td><td>72</td><td>35</td><td>58</td><td><strong>84</strong></td></tr>
+<tr><td>X-VLA</td><td>StackCube–Green</td><td>58</td><td><strong>76</strong></td><td>64</td><td>67</td></tr></tbody></table></div><p>TimelyDAgger has the highest reported AUPRC, TASR, and post-training success in 13 of 15 settings for each metric. For success, Diff-DAgger leads on π₀.₅ / PickPlane and HG-DAgger leads on X-VLA / StackCube–Green.</p><p>The timing study compares six fixed takeover steps on OpenDrawer Grasp-OOD. The FTA ablation reports higher TASR and success on both tested tasks. TASR–success correlations compare four methods within each setting and describe association, rather than a causal estimate.</p></details>
+</section>
+<section id="videos" class="section pale"><div class="wrap">
+  <div class="eyebrow">05 / ON THE REAL ROBOT</div><h2 class="section-title">Same task. A shifted insertion target.</h2>
+  <figure class="paper-figure setup-strip"><a class="figure-zoom" href="assets/real_world_setup_simplified.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/real_world_setup_simplified.jpg" loading="lazy" alt="Cable insertion training configuration and two shifted target-board positions"></a></figure>
+  <div class="tabs" role="group" aria-label="Evaluation position"><button type="button" data-position="middle" aria-pressed="true">Middle position</button><button type="button" data-position="upper-left" aria-pressed="false">Upper-left position</button></div>
+  <div class="video-grid" id="evaluation-videos">
+    <article class="video-card"><h3>Offline BC</h3><video id="eval-bc" controls playsinline preload="none" src="assets/videos/eval-middle-bc.mp4" poster="assets/posters/eval-middle-bc.jpg" aria-label="Offline BC — middle position, 15 attempts"></video><strong class="rate" id="rate-bc">20.0% <small>3 / 15 successes</small></strong></article>
+    <article class="video-card"><h3>Human-Gated DAgger</h3><video id="eval-hgd" controls playsinline preload="none" src="assets/videos/eval-middle-hgd.mp4" poster="assets/posters/eval-middle-hgd.jpg" aria-label="Human-Gated DAgger — middle position, 15 attempts"></video><strong class="rate" id="rate-hgd">33.3% <small>5 / 15 successes</small></strong></article>
+    <article class="video-card ours"><h3>TimelyDAgger</h3><video id="eval-rgd" controls playsinline preload="none" src="assets/videos/eval-middle-rgd.mp4" poster="assets/posters/eval-middle-rgd.jpg" aria-label="Robot-Gated DAgger — middle position, 15 attempts"></video><strong class="rate" id="rate-rgd">60.0% <small>9 / 15 successes</small></strong></article>
+  </div>
+  <p class="panel-caption">15 attempts per clip · selected trial sequences · 10× · silent.</p>
+  <details class="quiet-detail"><summary>Real-world results and recording notes</summary><figure class="paper-figure "><a class="figure-zoom" href="assets/real_world_success_horizontal.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure"><img src="assets/real_world_success_horizontal.jpg" loading="lazy" alt="Post-training cable insertion success: BC, HG-DAgger, and TimelyDAgger under OOD1, OOD2, and overall"></a></figure><p>Overall combines both OOD conditions. The setup figure reports the base policy’s success; the chart and video counters report post-training results.</p><p>Recordings include failures and resets. “Robot-gated DAgger” in the original clips refers to TimelyDAgger; its first middle-position attempt starts partway through insertion.</p></details>
+  <details class="quiet-detail collection-detail"><summary>Watch expert data collection</summary><div class="collection-layout"><div><video id="collection-video" controls playsinline preload="none" src="assets/videos/collection-ood1-rgd.mp4" poster="assets/posters/collection-ood1-rgd.jpg" aria-label="Robot-Gated DAgger data collection, OOD1"></video><p class="caption" id="collection-caption">Robot-Gated DAgger · OOD1 · full collection recording</p></div><div class="playlist" role="group" aria-label="Data collection recordings"><h3>COLLECTION RECORDINGS</h3><button type="button" data-collection="ood1-rgd" aria-pressed="true">Robot-Gated DAgger <span>OOD1</span></button><button type="button" data-collection="ood1-hgd" aria-pressed="false">Human-Gated DAgger <span>OOD1</span></button><button type="button" data-collection="ood1-bc" aria-pressed="false">Offline BC <span>OOD1</span></button><button type="button" data-collection="ood2-hgd" aria-pressed="false">Human-Gated DAgger <span>OOD2</span></button><button type="button" data-collection="ood2-bc" aria-pressed="false">Offline BC <span>OOD2</span></button></div></div></details>
+</div></section>
+<section id="overview" class="overview wrap" aria-labelledby="overview-title">
+  <div class="section-top"><div><div class="eyebrow">THE COMPLETE STUDY</div><h2 id="overview-title">The story in three minutes.</h2></div><p>3 min · with audio</p></div>
+  <video id="overview-video" controls playsinline preload="none" src="assets/videos/overview.mp4" poster="assets/posters/overview.jpg" aria-label="TimelyDAgger three-minute research overview with audio"></video>
+</section>
+<section id="citation" class="citation wrap"><div class="section-top"><h2>Citation</h2><div class="citation-actions"><button type="button" id="copy-citation" class="text-button">Copy BibTeX</button><a href="assets/timelydagger.bib" download>Download .bib</a></div></div><pre><code id="bibtex">@misc{zhao2026timelydagger,
+  title = {TimelyDAgger: Timing-Aware Expert Querying for VLA Policy Improvement},
+  author = {Zhixuan Zhao and Peiyan Li and Enhao Zhang and Yueran Tao and Hao Wang and Chenghao Yue and Lei Lv and Wentao Zhao and Jiahao Chen and Xin Liu and Kangyao Huang and Yu Luo and Huaping Liu},
+  year = {2026},
+  eprint = {2609.33157},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO},
+  url = {https://arxiv.org/abs/2609.33157}
+}</code></pre><p id="copy-status" role="status" aria-live="polite"></p></section>
+
+</main>
+<footer><div class="wrap footer-inner"><a class="brand-lockup" href="#"><img class="brand-logo" src="assets/seene-logo.png" alt="SEEN·E"><span class="project-mark"><small>RESEARCH</small><strong>TimelyDAgger</strong></span></a><p>SEEN·E Robotics · 2026</p><a href="https://arxiv.org/abs/2609.33157" target="_blank" rel="noopener">arXiv:2609.33157</a></div></footer>
+<script src="app.js?v=6" defer></script>
+</body>
+</html>
