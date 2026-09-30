@@ -6,7 +6,7 @@
 
 TimelyDAgger combines Bridge-PCA monitoring of internal VLA features with Feedback-guided Threshold Adaptation to improve when robots request expert takeover. Collected successful expert suffixes are used to update the policy under a matched retained expert-action budget.
 
-This repository currently contains the research project page, paper figures, and demonstration videos. Research implementation and checkpoints are not included. The code-release destination is intentionally unset for now.
+This repository currently contains the research project page, paper figures, and demonstration videos. Minimal Bridge-PCA and FTA method code is published in [TimelyDAgger-Code](https://github.com/hrinnnn/TimelyDAgger-Code). This project-page repository keeps the figures, videos, and website; experimental code and checkpoints are not included here.
 
 ## Results
 
